@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-xs-12 container" style="overflow:hidden;" ng-repeat="m in messages">
+        <div class="well col-xs-4" ng-class="{'pull-right': m.user == username}">
+            <div class="col-xs-8">
+                <p><b> {{m.user}} </b> </p>
+                <p ng-if="!m.giphy"> {{m.message}} </p>
+                <img ng-src="{{m.message.url}}" ng-if="m.giphy">
+            </div>
+            <div class="col-xs-4">
+                <p> {{m.timestamp | date}} </p> 
+            </div>
+        </div>
+    </div>
+    <div style="background-color:#3498db;">
+        <form role="form" name="form" style="bottom:0;padding:3px;position:fixed;">
+            <div class="input-group"> 
+                <input type="text" class="form-control" ng-model="message">
+                <span class="input-group-btn">
+                    <button class="btn btn-success" ng-click="sendMessage()">Send</button>
+                </span>
+            </div>
+        </form>     
+    </div> 
+</div>      

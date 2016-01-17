@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <script src="/socket.io/socket.io.js"></script>
+
+  </head>
+  <body ng-app="chat-challenge">
+    <nav class="navbar navbar-inverse" ng-controller="NavCtrl"> 
+        <div class="container fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Chat Challenge </a>
+            </div>
+            <button class="btn btn-default navbar-btn" ng-if="username" ng-click="leaveRoom()">Leave Room</button>
+        </div>
+    </nav>  
+      
+    <div ng-view="" class="col-xs-12"></div>  
+      
+      <!-- Bower ---->
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-socket-io/socket.js"></script>
+
+    <script src="app.js"></script>
+    <script src="scripts/joinRoom.js"></script>
+    <script src="factories/socket.js"></script>    
+    <script src="scripts/chat.js"></script>
+    <script src="scripts/navbar.js"></script>    
+    
+
+  </body>
+</html>

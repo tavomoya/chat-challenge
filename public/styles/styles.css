@@ -1,0 +1,16 @@
+.username {
+	max-width: 400px;
+	min-width: 280px;
+	margin: 60px auto 20px;
+	overflow: hidden;
+}
+
+.username-name {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #000;
+  outline: none;
+  padding-bottom: 15px;
+  text-align: center;
+  width: 400px;
+}

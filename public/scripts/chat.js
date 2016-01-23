@@ -26,10 +26,9 @@ app.controller('ChatCtrl', function ($scope, $location, $rootScope, socket) {
        $scope.message = "";
    });
    
-   //Jquery force
-   var container = $('.container');
-   
-   container[0].scrollTop = container[0].scrollHeight;
+   socket.on('new user', function (msg) {
+       $scope.messages.push(msg)
+   });
         
 
 });

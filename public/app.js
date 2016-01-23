@@ -4,7 +4,8 @@ var app = angular.module('chat-challenge', [
     'ngResource',
     'ngSanitize',
     'ngRoute',
-    'btford.socket-io' 
+    'btford.socket-io',
+    'luegg.directives' 
 ]);
 
 app.config(function ($routeProvider) {

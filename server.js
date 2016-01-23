@@ -39,8 +39,12 @@ io.on('connection', function (socket) {
   //
   // Allow the client to join a specified room
   //
-  socket.on('join', function (roomName) {
+  socket.on('join', function (roomName, username) {
     socket.join(roomName);
+    io.in(roomName).emit('new user', {
+        message: username + ' has joined the room',
+        timestamp: Date.now(),
+    });
 
   });
 
@@ -59,16 +63,21 @@ io.on('connection', function (socket) {
   //
   socket.on('message', function (data) {
     if (/^\/giphy/.test(data.message)) {
-        var query = data.message.slice(8);
+        var phrase = data.message.slice(7);
+        var query = {
+            q: phrase,
+            limit: 1
+        };
         giphy.search(query)
         .then(function (res) {
             io.in(data.room).emit('new message', {
-                message: res.data[0].images.fixed_width,
+                message: res.data[0].images.fixed_width.url,
                 timestamp: Date.now(),
                 user: data.username,
                 giphy: true
             }); 
         }, function (err) {
+            console.log('Something went wrong :/ ', err);
             io.in(data.room).emit('new message', {
                 message: 'There was an error requesting the image :/',
                 timestamp: Date.now(),
